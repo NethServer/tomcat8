@@ -6,6 +6,7 @@ License: GPL
 URL: %{url_prefix}/%{name} 
 Source0: http://it.apache.contactlab.it/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
 Source1: tomcat8.service
+Source2: tomcat8@.service
 
 Requires: java-1.8.0-openjdk, apache-commons-daemon-jsvc
 
@@ -26,10 +27,14 @@ BuildRequires: systemd
 %define debug_package %{nil}
 
 %pre
-getent group tomcat8 >/dev/null || groupadd -r tomcat8
-getent passwd tomcat8 >/dev/null || \
-    useradd -r -g tomcat8 -d /opt/tomcat8 -s /sbin/nologin \
-    -c "Apache Tomcat 8" tomcat8
+# add the tomcat user and group
+getent group tomcat >/dev/null || /usr/sbin/groupadd -f -g 53 -r tomcat
+if ! getent passwd tomcat >/dev/null ; then
+    if ! getent passwd 53 >/dev/null ; then
+        /usr/sbin/useradd -r -u 53 -g tomcat -d /usr/share/tomcat -s /sbin/nologin -c "Apache Tomcat" tomcat
+        # Tomcat uses a reserved ID, so there should never be an else
+    fi
+fi
 exit 0
 
 %description
@@ -41,11 +46,13 @@ mkdir -p %{buildroot}/opt/tomcat8
 tar xvf  %{SOURCE0} -C %{buildroot}/opt/tomcat8 --strip-components=1
 mkdir -p %{buildroot}/usr/lib/systemd/system/
 cp %{SOURCE1} %{buildroot}/usr/lib/systemd/system/
+cp %{SOURCE2} %{buildroot}/usr/lib/systemd/system/
+rm -rf %{buildroot}/opt/tomcat8/webapps/examples
 
 
 %files
-%defattr(-,root,tomcat8)
-/usr/lib/systemd/system/tomcat8.service
+%defattr(-,root,tomcat)
+/usr/lib/systemd/system/*
 /opt/tomcat8/lib/*
 /opt/tomcat8/bin/*
 %doc /opt/tomcat8/BUILDING.txt
@@ -55,10 +62,10 @@ cp %{SOURCE1} %{buildroot}/usr/lib/systemd/system/
 %doc /opt/tomcat8/README.md
 %doc /opt/tomcat8/RELEASE-NOTES
 %doc /opt/tomcat8/RUNNING.txt
-%attr(0770, tomcat8, tomcat8)/opt/tomcat8/webapps
-%attr(0770, tomcat8, tomcat8)/opt/tomcat8/work
-%attr(0770, tomcat8, tomcat8)/opt/tomcat8/temp
-%attr(0770, tomcat8, tomcat8)/opt/tomcat8/logs
-%attr(0770, tomcat8, tomcat8)/opt/tomcat8/conf
+%attr(0770, tomcat, tomcat)/opt/tomcat8/webapps
+%attr(0770, tomcat, tomcat)/opt/tomcat8/work
+%attr(0770, tomcat, tomcat)/opt/tomcat8/temp
+%attr(0770, tomcat, tomcat)/opt/tomcat8/logs
+%attr(0770, tomcat, tomcat)/opt/tomcat8/conf
 
 %changelog
