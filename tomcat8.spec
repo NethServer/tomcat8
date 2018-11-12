@@ -7,6 +7,7 @@ URL: %{url_prefix}/%{name}
 Source0: http://it.apache.contactlab.it/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
 Source1: tomcat8.service
 Source2: tomcat8@.service
+BuildArch: noarch
 
 Requires: java-1.8.0-openjdk, apache-commons-daemon-jsvc
 
@@ -69,3 +70,5 @@ rm -rf %{buildroot}/opt/tomcat8/webapps/examples
 %attr(0770, tomcat, tomcat)/opt/tomcat8/conf
 
 %changelog
+* Mon Nov 12 2018 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 8.5.34-1
+- First release - NethServer/dev#5638
