@@ -1,5 +1,4 @@
-Tomcat 8
-========
+# Tomcat 8
 
 Tomcat 8 RPM for CentOS 7, built from upstream binaries: https://tomcat.apache.org
 
