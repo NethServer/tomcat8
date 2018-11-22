@@ -70,5 +70,8 @@ rm -rf %{buildroot}/opt/tomcat8/webapps/examples
 %attr(0770, tomcat, tomcat)/opt/tomcat8/conf
 
 %changelog
+* Thu Nov 22 2018 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 8.5.35-1
+- Update to upstream release 8.5.35 - NethServer/dev#5638
+
 * Mon Nov 12 2018 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 8.5.34-1
 - First release - NethServer/dev#5638
