@@ -7,6 +7,7 @@ URL: %{url_prefix}/%{name}
 Source0: http://it.apache.contactlab.it/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
 Source1: tomcat8.service
 Source2: tomcat8@.service
+Source3: tomcat8-nojsvc@.service
 BuildArch: noarch
 
 Requires: java-1.8.0-openjdk, apache-commons-daemon-jsvc
@@ -48,6 +49,7 @@ tar xvf  %{SOURCE0} -C %{buildroot}/opt/tomcat8 --strip-components=1
 mkdir -p %{buildroot}/usr/lib/systemd/system/
 cp %{SOURCE1} %{buildroot}/usr/lib/systemd/system/
 cp %{SOURCE2} %{buildroot}/usr/lib/systemd/system/
+cp %{SOURCE3} %{buildroot}/usr/lib/systemd/system/
 rm -rf %{buildroot}/opt/tomcat8/webapps/examples
 
 
