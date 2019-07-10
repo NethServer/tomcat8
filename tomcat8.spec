@@ -4,7 +4,7 @@ Version: 8.5.35
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name} 
-Source0: http://it.apache.contactlab.it/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
+Source0: https://archive.apache.org/dist/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
 Source1: tomcat8.service
 Source2: tomcat8@.service
 Source3: tomcat8-nojsvc@.service
