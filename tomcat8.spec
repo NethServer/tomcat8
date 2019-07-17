@@ -7,7 +7,7 @@ URL: %{url_prefix}/%{name}
 Source0: https://archive.apache.org/dist/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
 Source1: tomcat8.service
 Source2: tomcat8@.service
-Source3: tomcat8-nojsvc@.service
+Source3: tomcat8-jsvc@.service
 BuildArch: noarch
 
 Requires: java-1.8.0-openjdk, apache-commons-daemon-jsvc
