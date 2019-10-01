@@ -1,9 +1,9 @@
 Summary: Tomcat 8
 Name: tomcat8
 Version: 8.5.35
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL
-URL: %{url_prefix}/%{name} 
+URL: %{url_prefix}/%{name}
 Source0: https://archive.apache.org/dist/tomcat/tomcat-8/v%{version}/bin/apache-tomcat-%{version}.tar.gz
 Source1: tomcat8.service
 Source2: tomcat8@.service
@@ -72,6 +72,9 @@ rm -rf %{buildroot}/opt/tomcat8/webapps/examples
 %attr(0770, tomcat, tomcat)/opt/tomcat8/conf
 
 %changelog
+* Tue Oct 01 2019 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 8.5.35-2
+- Tomcat8: don't use Jsvc supervisor as default for start an applications container. - NethServer/dev#5788
+
 * Thu Nov 22 2018 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 8.5.35-1
 - Update to upstream release 8.5.35 - NethServer/dev#5638
 
