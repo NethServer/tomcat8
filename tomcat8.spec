@@ -1,6 +1,6 @@
 Summary: Tomcat 8
 Name: tomcat8
-Version: 8.5.51
+Version: 8.5.56
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name}
