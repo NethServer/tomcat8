@@ -1,6 +1,6 @@
 Summary: Tomcat 8
 Name: tomcat8
-Version: 8.5.51
+Version: 8.5.56
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name}
@@ -72,6 +72,9 @@ rm -rf %{buildroot}/opt/tomcat8/webapps/examples
 %attr(0770, tomcat, tomcat)/opt/tomcat8/conf
 
 %changelog
+* Fri Jun 12 2020 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 8.5.56-1
+- Tomcat8: Update to upstream 8.5.56 - NethServer/dev #6201
+
 * Tue Mar 10 2020 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 8.5.51-1
 - Tomcat8: update to version 8.5.51 - NethServer/dev#6083
 
